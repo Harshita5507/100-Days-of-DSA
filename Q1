@@ -24,14 +24,15 @@ Explanation: Insert 3 at position 3, elements [4,5,6] shift right. */
 #include <stdio.h>
 int main()
 {
-    int n,i,index,x,j;
+    int n,i,index,x;
     printf("enter no of elements,n:");
     scanf("%d", &n);
 
-    int arr1[n];
-     printf("enter the elements of array: ");
+    int arr1[n+1];
 
-    for(i=0;i<n-1;i++)
+    printf("enter the elements of array: ");
+
+    for(i=0;i<n;i++)
     {
         scanf("%d", &arr1[i]);
     }
@@ -43,11 +44,19 @@ int main()
     scanf("%d", &x);
 
     
-    for(j=n ;j>=i;j--)
+    for(i=n ;i>x;i--)
     {
-        arr1[j+1]=arr1[j]; }
+        arr1[i]=arr1[i-1]; 
+    }
+
     arr1[i]=x;
     n++;
+
+    printf("Updated Output: \n");
+    for (i=0;i<n;i++)
+    {
+    printf(" %d ", arr1[i]);
+    }
 
     return 0;
 }
