@@ -9,7 +9,7 @@ Output: [[1,4,7],[2,5,8],[3,6,9]]
 Example 2:
 
 Input: matrix = [[1,2,3],[4,5,6]]
-Output: [[1,4],[2,5],[3,6]].       */
+Output: [[1,4],[2,5],[3,6]].      */
 
 
 
@@ -17,9 +17,48 @@ Output: [[1,4],[2,5],[3,6]].       */
 int main()
 {
     int m,n,i,j;
-    printf()
     
+    printf("enter m(no. of rows): ");
+    scanf("%d", &m);
+
+    printf("enter n(no. of columns): ");
+    scanf("%d", &n);
+
+    int arr1[m][n];
+    int transpose[n][m];
 
 
+    //elements of first matrix.
+    printf("enter elements of first matrix:");
+    for(i=0;i<m;i++)
+    {
+        for(j=0; j<n; j++)
+        {
+            scanf("%d", &arr1[i][j]);
+        }
+    }
+
+    //assign value.
+     for(i=0; i<m; i++)
+    {
+        for(j=0; j<n; j++)
+        {
+            transpose[j][i]= arr1[i][j];
+        }
+    }
+
+    
+    //print transpose matrix. 
+    for(i=0; i<m; i++)
+    {
+        for(j=0; j<n; j++)
+        {
+            printf(" %d ", transpose[i][j]);
+        }
+        printf("\n");
+    }
+    
     return 0;
 }
+
+
