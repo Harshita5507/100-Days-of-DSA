@@ -21,7 +21,6 @@ Traverse the linked list from head to end. Each time a node's data matches the g
 After traversal, print the final count.  */
 
 
-
  #include <stdio.h>
  #include <stdlib.h>
 
@@ -31,7 +30,6 @@ After traversal, print the final count.  */
     int data;
     struct node* next; 
  };
-
 
 
  struct node* createnode(int value)
@@ -44,7 +42,7 @@ After traversal, print the final count.  */
 
 
  
- struct node* insert_node(struct node* head, int value)
+ struct node* insert_node(struct node* head, int value, int key)
  {
     struct node* newnode=createnode(value);
     struct node* temp=head;
@@ -56,39 +54,66 @@ After traversal, print the final count.  */
     {
         temp= temp->next;
     }
+    temp->next= newnode;
+    return head;
     
-
  }
 
 
- struct node* insert_node()
+int count_occ(struct node* head, int key)
  {
+   struct node* temp=head;
+   int count=0;
 
+   if (temp==NULL)
+   printf("empty list. sorry!");
 
-
-
+   while(temp !=NULL)
+   {
+      if(temp->data==key)
+      count++;
+     temp=temp->next;
+   }
+   
+   return count;
  }
 
  
  
-
  int main()
  {
     int n,i,key,value;
     struct node* head=NULL;
-    printf("enter n: ");
+    struct node* temp=head;
+
+    printf("enter number of nodes: ");
     scanf("%d", &n);
 
-    printf("enter integers: ");
     for(i=0; i<n; i++)
     {
-        scanf("%d", &value);
-        head=createnode(value);
+      printf("enter value %d: ", i+1);
+      scanf("%d", &value);
+
+      struct node* p= createnode(value);
+
+      if(head=NULL)
+      {
+         head=p;
+         temp=head;
+      }
+
+      else
+      {
+         temp->next=p;
+         temp=temp->next;
+      }
+
     }
 
+    printf("enter the element whose occurrence is to be found: ");
+    scanf("%d", &key);
 
-
-
+    printf("%d", count_occ(head,key));
 
     return 0;
  }
