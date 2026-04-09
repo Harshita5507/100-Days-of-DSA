@@ -29,7 +29,8 @@ int front=-1,rear=-1,queue[MAX];
 
 int Enqueue(int element)
 {
-    if (front== (rear+1)%MAX)
+
+    if (front!=-1 &&front== (rear+1)%MAX)
     {
         printf("queue overflow.");
         return -1;
@@ -39,6 +40,7 @@ int Enqueue(int element)
     {
         front=rear=0;   
     }
+
     else
     {
         rear=(rear+1)%MAX;
@@ -60,7 +62,7 @@ int display()
 
     else
     {
-        for(int i=front; i<rear;i++)
+        for(int i=front; i<=rear;i++)
         {
             printf("%d ", queue[i]);
         }
@@ -76,10 +78,11 @@ int main()
     printf("enter n: ");
     scanf("%d", &n);
 
-    printf("enter elements: \n");
+    printf("enter elements \n"); 
 
     for(i=0;i<n;i++)
     {
+        printf("element %d: ", i+1);
         scanf("%d ", &element);
         Enqueue(element);
     }
